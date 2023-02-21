@@ -15,10 +15,25 @@ window.onmousemove = (e) => {
 
   track.dataset.percentage = nextPercentage;
 
-  track.style.transform = `translate(${nextPercentage}%, -50%)`;
+  // track.style.transform = `translate(${nextPercentage}%, -50%)`;
+
+  // for (const image of track.getElementsByClassName('image')) {
+  //   image.style.objectPosition = `${nextPercentage + 100}% 50%`;
+  // }
+  track.animate(
+    {
+      transform: `translate(${nextPercentage}%, -50%)`,
+    },
+    { duration: 1200, fill: 'forwards' }
+  );
 
   for (const image of track.getElementsByClassName('image')) {
-    image.style.objectPosition = `${nextPercentage + 100}% 50%`;
+    image.animate(
+      {
+        objectPosition: `${100 + nextPercentage}% center`,
+      },
+      { duration: 1200, fill: 'forwards' }
+    );
   }
 };
 
